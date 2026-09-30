@@ -2,7 +2,7 @@
 
 **Domain:** Web Development — Front-End
 **Project by:** Laiba Aftab
-**Submitted for:** Inovegen Internship — Task 3
+**Submitted for:** Inovegen Internship — Task 3 
 
 ## Overview
 
