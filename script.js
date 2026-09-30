@@ -1,337 +1,110 @@
-:root {
-  --ink: #1C1F1D;
-  --steel: #4A5560;
-  --rust: #C1440E;
-  --yellow: #F2B705;
-  --paper: #F5F2EA;
-  --card: #FFFFFF;
-  --border: #E3DDCC;
-  --radius: 10px;
+// 1. Mobile menu toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('active'));
+});
+
+// 2. FAQ accordion
+document.querySelectorAll('.accordion-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const item = header.parentElement;
+    item.classList.toggle('active');
+  });
+});
+
+// 3. Quote modal
+const quoteModal = document.getElementById('quoteModal');
+const openQuoteBtns = [document.getElementById('openQuote'), document.getElementById('openQuoteHero')];
+const closeModalBtn = document.getElementById('closeModal');
+
+openQuoteBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    quoteModal.classList.add('open');
+    quoteModal.setAttribute('aria-hidden', 'false');
+  });
+});
+
+function closeQuoteModal() {
+  quoteModal.classList.remove('open');
+  quoteModal.setAttribute('aria-hidden', 'true');
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+closeModalBtn.addEventListener('click', closeQuoteModal);
+quoteModal.addEventListener('click', (e) => {
+  if (e.target === quoteModal) closeQuoteModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeQuoteModal();
+});
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--paper);
-  color: var(--ink);
-  line-height: 1.6;
-}
+document.getElementById('quoteForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thanks — we\'ll text you an estimate shortly.');
+  e.target.reset();
+  closeQuoteModal();
+});
 
-h1, h2, h3, .logo { font-family: 'Archivo', sans-serif; }
+// 4. Contact form validation
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
 
-.container {
-  width: 90%;
-  max-width: 1120px;
-  margin: 0 auto;
-}
-
-a { color: inherit; }
-
-.btn {
-  display: inline-block;
-  padding: 13px 26px;
-  border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  border: none;
-  text-decoration: none;
-  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-}
-.btn-primary { background: var(--rust); color: #fff; }
-.btn-primary:hover { background: #a33a0c; transform: translateY(-2px); }
-.btn-outline { background: transparent; border: 2px solid var(--ink); color: var(--ink); }
-.btn-outline:hover { background: var(--ink); color: var(--paper); }
-.full-width { width: 100%; }
-
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  background: var(--paper);
-  border-bottom: 1px solid var(--border);
-  z-index: 500;
-}
-.nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 0;
-}
-.logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  text-decoration: none;
-}
-.logo span { color: var(--rust); }
-.nav-links {
-  display: flex;
-  gap: 28px;
-}
-.nav-links a {
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  border-bottom: 2px solid transparent;
-  padding-bottom: 2px;
-  transition: border-color 0.15s ease, color 0.15s ease;
-}
-.nav-links a:hover { border-color: var(--rust); color: var(--rust); }
-.nav-actions { display: flex; align-items: center; gap: 14px; }
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 6px;
-}
-.hamburger span { width: 22px; height: 2px; background: var(--ink); }
-
-/* Hero */
-.hero {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  align-items: center;
-  gap: 40px;
-  padding: 70px 0 90px;
-}
-.eyebrow {
-  color: var(--steel);
-  font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 16px;
-}
-.hero-text h1 {
-  font-size: 3.1rem;
-  line-height: 1.12;
-  font-weight: 800;
-  margin-bottom: 22px;
-}
-.hero-text h1 em { font-style: normal; color: var(--rust); }
-.hero-sub {
-  font-size: 1.08rem;
-  color: var(--steel);
-  max-width: 46ch;
-  margin-bottom: 30px;
-}
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-
-.hero-art { display: flex; justify-content: center; }
-.wheel-svg {
-  width: 100%;
-  max-width: 300px;
-  animation: spinIn 1.1s cubic-bezier(.2,.7,.3,1) both;
-}
-@keyframes spinIn {
-  from { opacity: 0; transform: rotate(-70deg) scale(0.85); }
-  to { opacity: 1; transform: rotate(0deg) scale(1); }
+function setError(id, message) {
+  const group = document.getElementById(id).closest('.form-group');
+  group.classList.toggle('invalid', Boolean(message));
+  group.querySelector('.error-msg').textContent = message || '';
 }
 
-/* Services */
-.services { padding: 70px 0; }
-.section-head { max-width: 55ch; margin-bottom: 40px; }
-.section-head h2 { font-size: 2.1rem; margin-bottom: 8px; }
-.section-head p { color: var(--steel); }
-
-.service-list { display: flex; flex-direction: column; gap: 14px; }
-.service-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr auto;
-  gap: 24px;
-  align-items: center;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px 28px;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
-.service-row:hover {
-  border-color: var(--rust);
-  box-shadow: 0 6px 20px rgba(28,31,29,0.06);
-}
-.service-name h3 { font-size: 1.2rem; margin-bottom: 4px; }
-.service-meta { font-size: 0.82rem; color: var(--steel); }
-.service-desc { color: var(--steel); font-size: 0.95rem; }
-.service-price {
-  font-family: 'Archivo', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: var(--rust);
-  justify-self: end;
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
-/* About */
-.about { background: var(--ink); color: var(--paper); padding: 80px 0; }
-.about-grid {
-  display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
-  gap: 50px;
-  align-items: center;
-}
-.about-art svg { width: 100%; max-width: 220px; }
-.about-text h2 { font-size: 2rem; margin-bottom: 18px; }
-.about-text p { color: #C9CDC6; margin-bottom: 14px; max-width: 60ch; }
+contactForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  let valid = true;
 
-/* FAQ */
-.faq { padding: 70px 0; }
-.accordion-item {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-bottom: 12px;
-  overflow: hidden;
-}
-.accordion-header {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 20px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  text-align: left;
-  cursor: pointer;
-  color: var(--ink);
-}
-.accordion-icon { color: var(--rust); font-size: 1.3rem; transition: transform 0.2s ease; }
-.accordion-item.active .accordion-icon { transform: rotate(45deg); }
-.accordion-body {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-  padding: 0 22px;
-}
-.accordion-item.active .accordion-body { max-height: 160px; }
-.accordion-body p { padding-bottom: 20px; color: var(--steel); font-size: 0.95rem; }
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const bike = document.getElementById('bike').value.trim();
 
-/* Contact */
-.contact { padding: 70px 0 90px; }
-.contact-wrapper {
-  max-width: 620px;
-  margin: 0 auto;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 40px;
-}
-.contact-wrapper h2 { font-size: 1.8rem; margin-bottom: 8px; }
-.contact-sub { color: var(--steel); margin-bottom: 26px; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.form-group { margin-bottom: 18px; }
-.form-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
-.form-group input, .form-group textarea {
-  width: 100%;
-  padding: 11px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-family: inherit;
-  font-size: 0.95rem;
-  background: var(--paper);
-}
-.form-group input:focus, .form-group textarea:focus {
-  outline: none;
-  border-color: var(--rust);
-}
-.form-group.invalid input, .form-group.invalid textarea { border-color: var(--rust); }
-.error-msg { color: var(--rust); font-size: 0.8rem; display: block; margin-top: 4px; min-height: 1em; }
-.success-msg { color: #3E7A44; font-weight: 600; margin-top: 14px; text-align: center; }
+  if (name === '') { setError('name', 'Please enter your name.'); valid = false; }
+  else { setError('name', ''); }
 
-/* Footer */
-.footer { border-top: 1px solid var(--border); padding: 26px 0; }
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 8px;
-  font-size: 0.85rem;
-  color: var(--steel);
-}
+  if (email === '') { setError('email', 'Please enter your email.'); valid = false; }
+  else if (!isValidEmail(email)) { setError('email', 'Enter a valid email address.'); valid = false; }
+  else { setError('email', ''); }
 
-/* Modal */
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(28,31,29,0.55);
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  padding: 20px;
-}
-.modal.open { display: flex; }
-.modal-content {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 34px;
-  width: 100%;
-  max-width: 400px;
-  position: relative;
-}
-.modal-content h3 { margin-bottom: 6px; font-size: 1.3rem; }
-.modal-content p { color: var(--steel); font-size: 0.9rem; margin-bottom: 20px; }
-.modal-content input {
-  width: 100%;
-  padding: 11px 14px;
-  margin-bottom: 12px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  font-family: inherit;
-  background: var(--paper);
-}
-.close-modal {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 1.4rem;
-  cursor: pointer;
-  color: var(--steel);
-}
+  if (bike === '') { setError('bike', 'Tell us the bike type and issue.'); valid = false; }
+  else { setError('bike', ''); }
 
-/* Focus visibility for accessibility */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
-  outline: 2px solid var(--rust);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .wheel-svg { animation: none; }
-}
-
-/* Responsive */
-@media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 40px; }
-  .hero-art { order: -1; }
-  .service-row { grid-template-columns: 1fr; }
-  .service-price { justify-self: start; }
-  .about-grid { grid-template-columns: 1fr; text-align: left; }
-  .about-art { max-width: 160px; }
-}
-
-@media (max-width: 640px) {
-  .nav-links {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--paper);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column;
-    padding: 18px 6%;
-    gap: 16px;
+  if (!valid) {
+    formSuccess.textContent = '';
+    return;
   }
-  .nav-links.active { display: flex; }
-  .hamburger { display: flex; }
-  .hero-text h1 { font-size: 2.2rem; }
-  .form-row { grid-template-columns: 1fr; }
-  .footer-content { flex-direction: column; }
-}
+
+  formSuccess.textContent = "Thanks! We'll confirm a time slot within one business day.";
+  contactForm.reset();
+  setTimeout(() => { formSuccess.textContent = ''; }, 5000);
+});
+
+// 5. Scroll-reveal animation
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+revealEls.forEach(el => revealObserver.observe(el));
