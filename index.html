@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gearhouse — Mobile Bike Repair</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <a href="#home" class="logo">Gearhouse<span>.</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="btn btn-primary" id="openQuote">Get a quote</button>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section id="home" class="hero container">
+  <div class="hero-text">
+    <p class="eyebrow">Mobile bike mechanic · serving the metro area</p>
+    <h1>We bring the workshop to your <em>driveway</em>.</h1>
+    <p class="hero-sub">Tune-ups, brake and gear repair, and full overhauls — done on the spot, no drop-off, no waiting room.</p>
+    <div class="hero-btns">
+      <button class="btn btn-primary" id="openQuoteHero">Book a tune-up</button>
+      <a href="#services" class="btn btn-outline">See services</a>
+    </div>
+  </div>
+  <div class="hero-art" id="heroArt">
+    <svg viewBox="0 0 300 300" class="wheel-svg" aria-hidden="true">
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#4A5560" stroke-width="6"/>
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#C1440E" stroke-width="6" stroke-dasharray="40 20"/>
+      <circle cx="150" cy="150" r="14" fill="#F2B705"/>
+      <g stroke="#1C1F1D" stroke-width="3">
+        <line x1="150" y1="150" x2="150" y2="30"/>
+        <line x1="150" y1="150" x2="253" y2="90"/>
+        <line x1="150" y1="150" x2="253" y2="210"/>
+        <line x1="150" y1="150" x2="150" y2="270"/>
+        <line x1="150" y1="150" x2="47" y2="210"/>
+        <line x1="150" y1="150" x2="47" y2="90"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section id="services" class="services container">
+  <div class="section-head">
+    <h2>Service tiers</h2>
+    <p>Pick what your bike needs. Every job comes with a 30-day ride-back guarantee.</p>
+  </div>
+
+  <div class="service-list">
+    <div class="service-row">
+      <div class="service-name">
+        <h3>Mobile Tune-Up</h3>
+        <span class="service-meta">On-site · 45 min</span>
+      </div>
+      <p class="service-desc">Brake and gear adjustment, chain lube, tire pressure and wear check, quick safety inspection — done at your curb.</p>
+      <span class="service-price">$45</span>
+    </div>
+
+    <div class="service-row">
+      <div class="service-name">
+        <h3>Full Overhaul</h3>
+        <span class="service-meta">Workshop drop-off · 2–3 days</span>
+      </div>
+      <p class="service-desc">Complete strip-down, deep clean, worn-part replacement, rebuild, and post-ride test. For bikes that haven't been serviced in years.</p>
+      <span class="service-price">$120</span>
+    </div>
+
+    <div class="service-row">
+      <div class="service-name">
+        <h3>Custom Build</h3>
+        <span class="service-meta">By consultation</span>
+      </div>
+      <p class="service-desc">Sourced frame and parts, built to your riding style and budget. We walk you through every component choice.</p>
+      <span class="service-price">Quote</span>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="container about-grid">
+    <div class="about-art" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <rect x="20" y="20" width="160" height="160" rx="4" fill="#1C1F1D"/>
+        <circle cx="70" cy="140" r="34" fill="none" stroke="#F2B705" stroke-width="5"/>
+        <circle cx="150" cy="90" r="34" fill="none" stroke="#F2B705" stroke-width="5"/>
+        <line x1="70" y1="140" x2="120" y2="50" stroke="#C1440E" stroke-width="5"/>
+        <line x1="120" y1="50" x2="150" y2="90" stroke="#C1440E" stroke-width="5"/>
+        <line x1="70" y1="140" x2="150" y2="90" stroke="#C1440E" stroke-width="5"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <h2>Started with one toolbox and a bike trailer.</h2>
+      <p>Gearhouse began in 2021 when our founder got tired of hauling bikes across town for a five-minute brake fix. Today it's a two-person crew covering the whole metro area, still doing every repair the same way: in front of you, so you can see exactly what's being fixed.</p>
+      <p>We service road, hybrid, mountain, and e-bikes — and we always show you the worn part before we replace it.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq container">
+  <div class="section-head">
+    <h2>Common questions</h2>
+  </div>
+  <div class="accordion">
+    <div class="accordion-item">
+      <button class="accordion-header">Do you service e-bikes?<span class="accordion-icon">+</span></button>
+      <div class="accordion-body"><p>Yes — we handle e-bike drivetrains, brakes, and general tune-ups. Battery and motor electronics go to our certified partner shop.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header">What areas do you cover?<span class="accordion-icon">+</span></button>
+      <div class="accordion-body"><p>We currently serve the metro area and inner suburbs within a 15-mile radius. Enter your address at booking to confirm coverage.</p></div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-header">How far in advance should I book?<span class="accordion-icon">+</span></button>
+      <div class="accordion-body"><p>Mobile tune-ups are usually available within 2–3 days. Full overhauls and custom builds book out further, especially in spring.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact container">
+  <div class="contact-wrapper">
+    <h2>Book a repair</h2>
+    <p class="contact-sub">Tell us about your bike and we'll confirm a time slot within one business day.</p>
+    <form id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+          <small class="error-msg"></small>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+          <small class="error-msg"></small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="bike">Bike type &amp; issue</label>
+        <input type="text" id="bike" name="bike" placeholder="e.g. Hybrid — squeaky brakes">
+        <small class="error-msg"></small>
+      </div>
+      <div class="form-group">
+        <label for="message">Anything else we should know?</label>
+        <textarea id="message" name="message" rows="4"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary full-width">Send request</button>
+      <p class="success-msg" id="formSuccess" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-content">
+    <span>© 2026 Gearhouse Mobile Bike Repair.</span>
+    <span>Task 3 — Inovegen Front-End Web Development Internship</span>
+  </div>
+</footer>
+
+<div class="modal" id="quoteModal" aria-hidden="true">
+  <div class="modal-content">
+    <button class="close-modal" id="closeModal" aria-label="Close">&times;</button>
+    <h3>Quick quote request</h3>
+    <p>Give us the basics and we'll text you a price estimate.</p>
+    <form id="quoteForm">
+      <input type="text" placeholder="Name" required>
+      <input type="tel" placeholder="Phone number" required>
+      <input type="text" placeholder="Bike issue" required>
+      <button type="submit" class="btn btn-primary full-width">Request estimate</button>
+    </form>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
