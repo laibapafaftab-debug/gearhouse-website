@@ -70,3 +70,18 @@ _Add desktop, tablet, and mobile screenshots here before submission — all thre
 - Desktop: _(add screenshot)_
 - Tablet: _(add screenshot)_
 - Mobile: _(add screenshot)_
+
+  **Desktop**
+
+  <img width="1557" height="774" alt="Screenshot 2026-10-09 153724" src="https://github.com/user-attachments/assets/a6adc737-2a25-45f1-91ae-0d9f80da5452" />
+
+  **Tablet**
+
+  <img width="1036" height="714" alt="Screenshot 2026-10-09 153812" src="https://github.com/user-attachments/assets/7d48f027-7aa8-40ec-ae93-024f99410e62" />
+
+  **Mobile**
+
+  <img width="706" height="1413" alt="image" src="https://github.com/user-attachments/assets/b14fcaf0-1326-402b-ac31-8f6e5bc63844" />
+
+
+
