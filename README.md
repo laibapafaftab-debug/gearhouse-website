@@ -1,7 +1,9 @@
-# Gearhouse — Mobile Bike Repair (Task 3)
+# Gearhouse — Mobile Bike Repair 
 
 **Domain:** Web Development — Front-End
+
 **Project by:** Laiba Aftab
+
 **Submitted for:** Inovegen Internship — Task 3 
 
 ## Overview
