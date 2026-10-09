@@ -67,9 +67,6 @@ Fonts (Archivo, Inter) load via Google Fonts CDN in `index.html`; no other depen
 
 _Add desktop, tablet, and mobile screenshots here before submission — all three breakpoints this time._
 
-- Desktop: _(add screenshot)_
-- Tablet: _(add screenshot)_
-- Mobile: _(add screenshot)_
 
   **Desktop**
 
